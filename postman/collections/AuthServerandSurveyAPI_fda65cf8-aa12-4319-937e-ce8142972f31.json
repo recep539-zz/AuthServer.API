@@ -1,0 +1,1131 @@
+{
+	"info": {
+		"_postman_id": "0fcaf446-ede5-4708-9077-7d25b84a731b",
+		"name": "AuthServerandSurveyAPI",
+		"description": "Buy or rent spacecrafts",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Read a spacecraft",
+			"id": "4c7746b1-89a5-470e-81f1-e32c375cfac9",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/spacecrafts/:spacecraftId",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"spacecrafts",
+						":spacecraftId"
+					],
+					"variable": [
+						{
+							"id": "f92d2305-fea2-4336-bf8b-b8eb701e93a1",
+							"key": "spacecraftId",
+							"value": "in",
+							"description": "(Required) The unique identifier of the spacecraft"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"id": "cded99a6-5050-4f68-a418-2513137b7238",
+					"name": "The spacecraft corresponding to the provided `spacecraftId`",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "Added as a part of security scheme: apikey",
+								"key": "X-Api-Key",
+								"value": "<API Key>"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/spacecrafts/:spacecraftId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"spacecrafts",
+								":spacecraftId"
+							],
+							"variable": [
+								{
+									"key": "spacecraftId",
+									"value": "in",
+									"description": "(Required) The unique identifier of the spacecraft"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"responseTime": null,
+					"body": "{\n  \"id\": \"<string>\",\n  \"name\": \"enim\",\n  \"type\": \"station\",\n  \"description\": \"laborum esse aliquip laboris labore\"\n}"
+				},
+				{
+					"id": "4379ebe6-6980-4b7f-8c14-8e9ec1aa0f74",
+					"name": "No spacecraft found for the provided `spacecraftId`",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "Added as a part of security scheme: apikey",
+								"key": "X-Api-Key",
+								"value": "<API Key>"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/spacecrafts/:spacecraftId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"spacecrafts",
+								":spacecraftId"
+							],
+							"variable": [
+								{
+									"key": "spacecraftId",
+									"value": "in",
+									"description": "(Required) The unique identifier of the spacecraft"
+								}
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"responseTime": null,
+					"body": "{\n  \"message\": \"reprehenderit\"\n}"
+				},
+				{
+					"id": "9586559c-832c-4a8e-a1ed-d86352860202",
+					"name": "Unexpected error",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "Added as a part of security scheme: apikey",
+								"key": "X-Api-Key",
+								"value": "<API Key>"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/spacecrafts/:spacecraftId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"spacecrafts",
+								":spacecraftId"
+							],
+							"variable": [
+								{
+									"key": "spacecraftId",
+									"value": "in",
+									"description": "(Required) The unique identifier of the spacecraft"
+								}
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"responseTime": null,
+					"body": "{\n  \"message\": \"reprehenderit\"\n}"
+				}
+			]
+		},
+		{
+			"name": "AnswerList",
+			"id": "60bb6f8c-7683-4d0b-8d95-2949eb9b1f97",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjJhZjNkZTVhLWI2Y2QtNGU2Mi05OGQ2LWRiNTI1MGU0MjllNSIsImVtYWlsIjoiYmlsYWxAZ21haWwuY29tIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZSI6IkJpbGFsQm95YWNpIiwianRpIjoiOTgzOTA0NWUtZGI1Ni00YmI2LTk3ZDctYTljODA5ZmQwMDg5IiwiVXNlciI6IjJhZjNkZTVhLWI2Y2QtNGU2Mi05OGQ2LWRiNTI1MGU0MjllNSIsImJpcnRoLWRhdGUiOiIwMS8wMS8wMDAxIiwiYXVkIjpbInd3dy5hdXRoc2VydmVyLmNvbSIsInd3dy5iaWxhbC5jb20iXSwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjpbImFkbWluIiwidXNlciJdLCJuYmYiOjE2NjQzMDUwMzQsImV4cCI6MTY2NDMwNTMzNCwiaXNzIjoid3d3LmF1dGhzZXJ2ZXIuY29tIn0.WtQS0vh5HrndWgzaaRzzPmCmOmoGNjibe7luH30HKfg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44354/AnswerOptions/ListOfAnswerOptions",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44354",
+					"path": [
+						"AnswerOptions",
+						"ListOfAnswerOptions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AnswerListByQuestion",
+			"id": "8868bf71-82ea-4333-8b4e-85090b7aadd7",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjJhZjNkZTVhLWI2Y2QtNGU2Mi05OGQ2LWRiNTI1MGU0MjllNSIsImVtYWlsIjoiYmlsYWxAZ21haWwuY29tIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZSI6IkJpbGFsQm95YWNpIiwianRpIjoiY2ViYWMyOTktYjViOC00ODdhLTk2YzQtODAzYTY1OWIxMTdkIiwiVXNlciI6IjJhZjNkZTVhLWI2Y2QtNGU2Mi05OGQ2LWRiNTI1MGU0MjllNSIsImJpcnRoLWRhdGUiOiIwMS8wMS8wMDAxIiwiYXVkIjpbInd3dy5hdXRoc2VydmVyLmNvbSIsInd3dy5iaWxhbC5jb20iXSwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjpbImFkbWluIiwidXNlciJdLCJuYmYiOjE2NjQyNzc5MzgsImV4cCI6MTY2NDI3ODIzOCwiaXNzIjoid3d3LmF1dGhzZXJ2ZXIuY29tIn0.h08zme-_fivFLdZqQIDfuUiXYn1xZMYqogSI8HSXZo0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44354/AnswerOptions/AnswerListByQuestion/",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44354",
+					"path": [
+						"AnswerOptions",
+						"AnswerListByQuestion",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AnswerDelete",
+			"id": "adc50d06-0ce6-426a-bc09-9ffb2a377e6e",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjJhZjNkZTVhLWI2Y2QtNGU2Mi05OGQ2LWRiNTI1MGU0MjllNSIsImVtYWlsIjoiYmlsYWxAZ21haWwuY29tIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZSI6IkJpbGFsQm95YWNpIiwianRpIjoiNmQ2MzM2YWYtOWYxNS00ZDBhLTg1OTEtOWRhMTZjYTc2MjdhIiwiVXNlciI6IjJhZjNkZTVhLWI2Y2QtNGU2Mi05OGQ2LWRiNTI1MGU0MjllNSIsImJpcnRoLWRhdGUiOiIwMS8wMS8wMDAxIiwiYXVkIjpbInd3dy5hdXRoc2VydmVyLmNvbSIsInd3dy5iaWxhbC5jb20iXSwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjpbImFkbWluIiwidXNlciJdLCJuYmYiOjE2NjQyNzgyNzIsImV4cCI6MTY2NDI3ODU3MiwiaXNzIjoid3d3LmF1dGhzZXJ2ZXIuY29tIn0.jATlwcPqbQwZ0Hdo3OaEHMg0N_x1zGMWbyrnVFNxEpQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44354/AnswerOptions/Delete_AnswerOption/",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44354",
+					"path": [
+						"AnswerOptions",
+						"Delete_AnswerOption",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AnswerCreate",
+			"id": "b025da60-fba5-4f9b-9f9f-524b2a319e4b",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjJhZjNkZTVhLWI2Y2QtNGU2Mi05OGQ2LWRiNTI1MGU0MjllNSIsImVtYWlsIjoiYmlsYWxAZ21haWwuY29tIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZSI6IkJpbGFsQm95YWNpIiwianRpIjoiY2ExZTQ3YzItYjc3OC00M2JjLWJlZTEtYzg5MGYyYjU4YjAyIiwiVXNlciI6IjJhZjNkZTVhLWI2Y2QtNGU2Mi05OGQ2LWRiNTI1MGU0MjllNSIsImJpcnRoLWRhdGUiOiIwMS8wMS8wMDAxIiwiYXVkIjpbInd3dy5hdXRoc2VydmVyLmNvbSIsInd3dy5iaWxhbC5jb20iXSwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjpbImFkbWluIiwidXNlciJdLCJuYmYiOjE2NjQyNzgxNTMsImV4cCI6MTY2NDI3ODQ1MywiaXNzIjoid3d3LmF1dGhzZXJ2ZXIuY29tIn0.bbYUcW6TDZ83Ao8g_Yk1NQPa8dQagKu4-vnzDlYtu9s",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"answerName\": \"Tıp Çöpü\",\r\n  \"questionsId\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44354/AnswerOptions/Create_AnswerOption",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44354",
+					"path": [
+						"AnswerOptions",
+						"Create_AnswerOption"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AnswerUpdate",
+			"id": "ec5f56dc-7fd6-4173-a4fc-185512426f79",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"answerId\": 1,\r\n        \"answerName\": \"Halı\",\r\n        \"questionsId\": 1\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44354/AnswerOptions/Update_AnswerOption",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44354",
+					"path": [
+						"AnswerOptions",
+						"Update_AnswerOption"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "FindAnswer",
+			"id": "f2daa612-a8c6-443c-998f-6be24d68a068",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjJhZjNkZTVhLWI2Y2QtNGU2Mi05OGQ2LWRiNTI1MGU0MjllNSIsImVtYWlsIjoiYmlsYWxAZ21haWwuY29tIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZSI6IkJpbGFsQm95YWNpIiwianRpIjoiNjZhZjA5N2EtMDc1NS00MDdkLThhNTktMmM4MDU4YTU1ZjNlIiwiVXNlciI6IjJhZjNkZTVhLWI2Y2QtNGU2Mi05OGQ2LWRiNTI1MGU0MjllNSIsImJpcnRoLWRhdGUiOiIwMS8wMS8wMDAxIiwiYXVkIjpbInd3dy5hdXRoc2VydmVyLmNvbSIsInd3dy5iaWxhbC5jb20iXSwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjpbImFkbWluIiwidXNlciJdLCJuYmYiOjE2NjQzMDUyMjksImV4cCI6MTY2NDMwNTUyOSwiaXNzIjoid3d3LmF1dGhzZXJ2ZXIuY29tIn0.EYfVWMai2mTfijw7EnqrMWDOZpxdPRVvuoshy4BTVrA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44354/Answer/Find_Answer/1",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44354",
+					"path": [
+						"Answer",
+						"Find_Answer",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UserAnswer",
+			"id": "aa6fe5ee-d232-46f1-a2d5-6619c234f8d1",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44354/Answer/AnswerListByUserName?name=Bilal",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44354",
+					"path": [
+						"Answer",
+						"AnswerListByUserName"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Bilal"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UserAnswer Ekleme",
+			"id": "d1d8db85-12f2-4359-a068-59c09fe0c15a",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userName\": \"Bilal\",\r\n    \"answerId\": 1,\r\n    \"questionId\": 1,\r\n    \"surveyId\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44354/Answer/Create_Answer",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44354",
+					"path": [
+						"Answer",
+						"Create_Answer"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteAnswer",
+			"id": "65ddba38-5f9f-4d6c-b820-32845ec58d09",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44354/Answer/Delete_Answer/",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44354",
+					"path": [
+						"Answer",
+						"Delete_Answer",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateAnswer",
+			"id": "b879d89d-0eea-4ba4-907f-6f017b63ad1e",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userAnswerId\": 1,\r\n    \"userName\": \"Bilal\",\r\n    \"answerId\": 1,\r\n    \"questionId\": 1,\r\n    \"surveyId\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44354/Answer/Update_Answer",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44354",
+					"path": [
+						"Answer",
+						"Update_Answer"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AnswerList",
+			"id": "08e49590-8bc6-4e9d-902b-4f724ae6d3d0",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44354/Answer/ListOfAnswer",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44354",
+					"path": [
+						"Answer",
+						"ListOfAnswer"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "QuestionList",
+			"id": "bde7d66c-238b-4e2b-bdf9-68dfbd31e2bd",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjJhZjNkZTVhLWI2Y2QtNGU2Mi05OGQ2LWRiNTI1MGU0MjllNSIsImVtYWlsIjoiYmlsYWxAZ21haWwuY29tIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZSI6IkJpbGFsQm95YWNpIiwianRpIjoiNGU2YzkyMWMtYWUwYy00ZGViLWE2ZjEtNWE0ZjFmNTkzNDYyIiwiVXNlciI6IjJhZjNkZTVhLWI2Y2QtNGU2Mi05OGQ2LWRiNTI1MGU0MjllNSIsImJpcnRoLWRhdGUiOiIwMS8wMS8wMDAxIiwiYXVkIjpbInd3dy5hdXRoc2VydmVyLmNvbSIsInd3dy5iaWxhbC5jb20iXSwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjpbImFkbWluIiwidXNlciJdLCJuYmYiOjE2NjQzMDQ5MzksImV4cCI6MTY2NDMwNTIzOSwiaXNzIjoid3d3LmF1dGhzZXJ2ZXIuY29tIn0.hFYP1IM7VdLycIYuTJ_T4Sthq6nXXKuiN4sjvhiSs_Y",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44354/Question/ListOfQuestions",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44354",
+					"path": [
+						"Question",
+						"ListOfQuestions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "QuestionListByQuestionType",
+			"id": "7298eae2-bb00-47ee-bab2-d3b71d9ce45c",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44354/Question/QuestionListByQuestionType/",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44354",
+					"path": [
+						"Question",
+						"QuestionListByQuestionType",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "QuestionListBySurveyList",
+			"id": "bce959d3-84aa-40ba-b3c6-349114966c89",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44354/Question/QuestionListBySurvey/",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44354",
+					"path": [
+						"Question",
+						"QuestionListBySurvey",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateQuestion",
+			"id": "a8510cb3-0d5b-430a-b706-6d2ce8b4e71b",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n        \"questionLine\": \"Hangisi Tıbbi Cihaz Değildir?\",\r\n        \"questionTypeId\": 1,\r\n        \"surveyId\": 1\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44354/Question/Create_Question",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44354",
+					"path": [
+						"Question",
+						"Create_Question"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete_Question",
+			"id": "3003b0e9-5cf7-4093-9b91-cce8f0f8b56a",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://localhost:44354/Question/Delete_Question/",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44354",
+					"path": [
+						"Question",
+						"Delete_Question",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update_Question",
+			"id": "8ded929e-1bbb-42a7-a601-7ac01004dad2",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n        \"questionId\": 1,\r\n        \"questionLine\": \"Hangisi Tıbbi Cihaz Değildir?\",\r\n        \"questionTypeId\": 1,\r\n        \"surveyId\": 1\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44354/Question/Update_Question",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44354",
+					"path": [
+						"Question",
+						"Update_Question"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateSurvey",
+			"id": "14f7e0e1-6b45-4e40-82d9-a9ca57226ef5",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6ImI0ZGNmNzczLTFmNDctNDdiMy04YTA0LTkyMTRkNWY0MDhmNyIsImVtYWlsIjoiYmlsYWxAZ21haWwuY29tIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZSI6IkJpbGFsIiwianRpIjoiNzFjODlhYTMtYmQ0OS00NTIyLWFjZDUtZGU5NDE3MGU0YzAwIiwiVXNlciI6ImI0ZGNmNzczLTFmNDctNDdiMy04YTA0LTkyMTRkNWY0MDhmNyIsImJpcnRoLWRhdGUiOiIwMS8wMS8xOTk4IiwiYXVkIjpbInd3dy5hdXRoc2VydmVyLmNvbSIsInd3dy5iaWxhbC5jb20iXSwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjpbInVzZXIiLCJhZG1pbiJdLCJuYmYiOjE2NjQyNjc1NDcsImV4cCI6MTY2NDI2Nzg0NywiaXNzIjoid3d3LmF1dGhzZXJ2ZXIuY29tIn0.BhV5r_5T43-EflxHpfM2Hh-wDUrdfPGqGGuzHn0YQVY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"surveyName\": \"Tıbbi Atıklar\",\r\n  \"categoryId\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44354/Survey/Create_Survey",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44354",
+					"path": [
+						"Survey",
+						"Create_Survey"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteSurvey",
+			"id": "b5c08659-57d4-4306-8338-b5f8155a078a",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44354/Survey/Delete_Survey",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44354",
+					"path": [
+						"Survey",
+						"Delete_Survey"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateSurvey",
+			"id": "2441ef54-6d7e-4cd5-8483-3e954d514c63",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"surveyId\":,\r\n  \"surveyName\": \"Tıbbi Atıklar\",\r\n  \"categoryId\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44354/Survey/Update_Survey",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44354",
+					"path": [
+						"Survey",
+						"Update_Survey"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ListSurvey",
+			"id": "98270ada-f4c8-4c02-8116-7eef9fe08083",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44354/Survey/ListOfSurvey",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44354",
+					"path": [
+						"Survey",
+						"ListOfSurvey"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Categoriye göre survey",
+			"id": "457f0250-d7db-4644-a4d1-59ecfbb08ef0",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44354/Survey/SurveyListByCategory/",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44354",
+					"path": [
+						"Survey",
+						"SurveyListByCategory",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Yeni Kullanıcı Ekleme",
+			"id": "533fc51f-1e69-4749-b51e-1e25367ecab0",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"userName\": \"BilalBoyaci\",\r\n  \"email\": \"bilal@gmail.com\",\r\n  \"password\": \"Bilal539*\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/User/",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"User",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Token Üretme",
+			"id": "a7e18fb5-db80-4df2-8e7d-50cf3a538b2e",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"bilal@gmail.com\",\r\n  \"password\": \"Bilal539*\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/Auth/CreateToken",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"Auth",
+						"CreateToken"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Token Kontrolü",
+			"id": "4225a079-53aa-42c2-b7a4-bedc24a2e384",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/api/User",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"User"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Refresh Token Kontrolü",
+			"id": "e7daba58-cefc-4a59-a913-a6921c57ab96",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"refreshToken\": \"P2ZcI4Fg8H8TUztBsOg6L8mrOvD93VllOc+GoFNLJ1M=\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/Auth/CreateTokenByRefreshToken",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"Auth",
+						"CreateTokenByRefreshToken"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Token Geri Alma",
+			"id": "248914a4-e215-4c0a-a542-706715cab8ae",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"refreshToken\": \"VDvMdVgmczYZc4m28KizoJ8VgwH/u60AFb5lC8U2CRo=\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/Auth/RevokeRefreshToken",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"Auth",
+						"RevokeRefreshToken"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "RoleEkleme",
+			"id": "09eef59b-6d7f-4ed1-ae77-0f9957cb14f2",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/api/User/CreateUserRoles/BilalBoyaci",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"User",
+						"CreateUserRoles",
+						"BilalBoyaci"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Client Kontrolü",
+			"id": "c810fc0b-6a2c-45d7-8999-3c4fb07c182c",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"clientId\": \"SpaApp\",\r\n  \"clientSecret\": \"secret\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/Auth/CreateTokenByClient",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"Auth",
+						"CreateTokenByClient"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "key",
+				"value": "X-Api-Key",
+				"type": "string"
+			},
+			{
+				"key": "value",
+				"value": "<API Key>",
+				"type": "string"
+			},
+			{
+				"key": "in",
+				"value": "header",
+				"type": "string"
+			}
+		]
+	},
+	"variable": [
+		{
+			"id": "207a631b-01b1-4b58-a630-163f9af3cfd3",
+			"key": "baseUrl",
+			"value": "/",
+			"type": "string"
+		}
+	]
+}
