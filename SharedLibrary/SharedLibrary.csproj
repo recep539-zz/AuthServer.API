@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+		<PropertyGroup>
+			<TargetFramework>net7.0</TargetFramework>
+		</PropertyGroup>
+		<ItemGroup>
+			<FrameworkReference Include="Microsoft.AspNetCore.App"></FrameworkReference>
+			<!-- Sonradan ekledik projenin servise kısmına referans olarak-->
+		</ItemGroup>
+		<ItemGroup>
+		  <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.17" />
+		</ItemGroup>
+	</Project>
